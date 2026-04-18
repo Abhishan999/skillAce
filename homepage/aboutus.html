@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Trade Platform | Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a192f;
+            --secondary: #112240;
+            --accent: #64ffda;
+            --text-primary: #f4f4f9;
+            --text-secondary: #ccd6f6;
+            --highlight: #4CAF50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary);
+            margin: 0;
+            padding: 0;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--secondary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(100,255,218,0.1) 0%, rgba(100,255,218,0) 70%);
+            z-index: 0;
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            position: relative;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+            margin: 15px auto;
+            border-radius: 3px;
+        }
+
+        .platform-description {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-section {
+            margin: 40px 0;
+        }
+
+        .section-title {
+            color: var(--accent);
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .contributors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contributor-card {
+            background: rgba(17, 34, 64, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            width: 280px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .contributor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent);
+        }
+
+        .contributor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(100,255,218,0.1) 0%, rgba(100,255,218,0) 50%);
+            z-index: -1;
+        }
+
+        .contributor-name {
+            color: var(--accent);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contributor-details {
+            color: var(--text-secondary);
+            font-size: 1em;
+            margin: 8px 0;
+        }
+
+        .branch-info {
+            background: rgba(10, 25, 47, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .branch-title {
+            color: var(--accent);
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .branch-name {
+            color: var(--highlight);
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+        }
+
+        .platform-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: rgba(17, 34, 64, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .feature-icon {
+            color: var(--accent);
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            color: var(--text-primary);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            
+            .contributors {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contributor-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Skill Trade Platform</h1>
+        
+        <p class="platform-description">
+            A revolutionary platform connecting individuals to exchange skills and knowledge. 
+            Our mission is to create a community where learning is collaborative, accessible, 
+            and rewarding for everyone involved.
+        </p>
+        
+        <div class="platform-features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3 class="feature-title">Skill Exchange</h3>
+                <p class="feature-desc">Trade your expertise with others who have skills you want to learn.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="feature-title">Community Driven</h3>
+                <p class="feature-desc">Join a growing community of learners and educators.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">Progress Tracking</h3>
+                <p class="feature-desc">Monitor your learning journey and skill development.</p>
+            </div>
+        </div>
+        
+        <div class="team-section">
+            <h2 class="section-title">Development Team</h2>
+            
+            <ul class="contributors">
+                <li class="contributor-card">
+                    <h3 class="contributor-name">Abhinav Gaur</h3>
+                    <p class="contributor-details">Roll Number: 18678 </p>
+                    
+                </li>
+                
+                <li class="contributor-card">
+                    <h3 class="contributor-name">Rishabh Tiwari</h3>
+                    <p class="contributor-details">Roll Number: 18727</p>
+                    
+                </li>
+                
+                <li class="contributor-card">
+                    <h3 class="contributor-name">Kashish</h3>
+                    <p class="contributor-details">Roll Number: 18701</p>
+                    
+                </li>
+            </ul>
+        </div>
+        
+        <div class="branch-info">
+            <h3 class="branch-title">Academic Information</h3>
+            <p class="contributor-details">Branch: <span class="branch-name">Department of Electronics and Communication Engineering (ECZ)</span></p>
+            <p class="contributor-details">Institution: <span class="branch-name">Dronacharya Group of Institutions</span></p>
+            <p class="contributor-details">Academic Year: <span class="branch-name">2nd Year</span></p>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</body>
+</html>
